@@ -27,7 +27,7 @@
                 alert("Please fill in all fields!");
                 return;
             }
-            let users = JSON.parse(localStorage.getItem("users"));
+            let users = JSON.parse(localStorage.getItem("users")) || []
 
             users.push({ name, email });
             localStorage.setItem("users", JSON.stringify(users));
