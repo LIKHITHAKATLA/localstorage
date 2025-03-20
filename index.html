@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <a href="localpage.html" target="_blank" class="view-btn"><button>View Details</button></a>
+    <form>
+        <h1 class="login">Login</h1>
+        <input type="text" class="name" placeholder="Enter Your Name" required><br>
+        <input type="email" class="email" placeholder="Enter Your Email" required>
+        <button id="submit">SUBMIT</button>
+    </form>
+
+    <script>
+        let button = document.getElementById("submit")
+        
+        button.addEventListener("click",(event)=>{
+            event.preventDefault()
+            let name = document.getElementsByClassName("name")[0].value
+            let email = document.getElementsByClassName("email")[0].value
+            
+            if (name.trim() === "" || email.trim() === "") {
+                alert("Please fill in all fields!");
+                return;
+            }
+            let users = JSON.parse(localStorage.getItem("users"));
+
+            users.push({ name, email });
+            localStorage.setItem("users", JSON.stringify(users));
+
+            alert("data saved")
+
+            name=""
+            email=""
+
+        })
+    </script>
+    
+</body>
+</html>
